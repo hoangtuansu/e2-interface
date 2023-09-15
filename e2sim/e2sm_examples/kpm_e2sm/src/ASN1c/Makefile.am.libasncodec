@@ -1,380 +1,510 @@
 ASN_MODULE_SRCS=	\
-	./asn/TimeStamp.c	\
-	./asn/GranularityPeriod.c	\
-	./asn/MeasurementType.c	\
-	./asn/MeasurementTypeName.c	\
-	./asn/MeasurementTypeID.c	\
-	./asn/MeasurementLabel.c	\
-	./asn/TestCondInfo.c	\
-	./asn/TestCond-Type.c	\
-	./asn/TestCond-Expression.c	\
-	./asn/TestCond-Value.c	\
-	./asn/MeasurementInfoList.c	\
-	./asn/MeasurementInfoItem.c	\
-	./asn/LabelInfoList.c	\
-	./asn/LabelInfoItem.c	\
-	./asn/MeasurementData.c	\
-	./asn/MeasurementDataItem.c	\
-	./asn/MeasurementRecord.c	\
-	./asn/MeasurementRecordItem.c	\
-	./asn/MeasurementInfo-Action-List.c	\
-	./asn/MeasurementInfo-Action-Item.c	\
-	./asn/MeasurementCondList.c	\
-	./asn/MeasurementCondItem.c	\
-	./asn/MeasurementCondUEidList.c	\
-	./asn/MeasurementCondUEidItem.c	\
-	./asn/MatchingCondList.c	\
-	./asn/MatchingCondItem.c	\
-	./asn/MatchingUEidList.c	\
-	./asn/MatchingUEidItem.c	\
-	./asn/MatchingUeCondPerSubList.c	\
-	./asn/MatchingUeCondPerSubItem.c	\
-	./asn/MatchingUEidPerSubList.c	\
-	./asn/MatchingUEidPerSubItem.c	\
-	./asn/UEMeasurementReportList.c	\
-	./asn/UEMeasurementReportItem.c	\
-	./asn/E2SM-KPM-EventTriggerDefinition.c	\
-	./asn/E2SM-KPM-EventTriggerDefinition-Format1.c	\
-	./asn/E2SM-KPM-ActionDefinition.c	\
-	./asn/E2SM-KPM-ActionDefinition-Format1.c	\
-	./asn/E2SM-KPM-ActionDefinition-Format2.c	\
-	./asn/E2SM-KPM-ActionDefinition-Format3.c	\
-	./asn/E2SM-KPM-ActionDefinition-Format4.c	\
-	./asn/E2SM-KPM-ActionDefinition-Format5.c	\
-	./asn/E2SM-KPM-IndicationHeader.c	\
-	./asn/E2SM-KPM-IndicationHeader-Format1.c	\
-	./asn/E2SM-KPM-IndicationMessage.c	\
-	./asn/E2SM-KPM-IndicationMessage-Format1.c	\
-	./asn/E2SM-KPM-IndicationMessage-Format2.c	\
-	./asn/E2SM-KPM-IndicationMessage-Format3.c	\
-	./asn/E2SM-KPM-RANfunction-Description.c	\
-	./asn/RIC-EventTriggerStyle-Item.c	\
-	./asn/RIC-ReportStyle-Item.c	\
-	./asn/CGI.c	\
-	./asn/CoreCPID.c	\
-	./asn/InterfaceIdentifier.c	\
-	./asn/InterfaceID-NG.c	\
-	./asn/InterfaceID-Xn.c	\
-	./asn/InterfaceID-F1.c	\
-	./asn/InterfaceID-E1.c	\
-	./asn/InterfaceID-S1.c	\
-	./asn/InterfaceID-X2.c	\
-	./asn/InterfaceID-W1.c	\
-	./asn/Interface-MessageID.c	\
-	./asn/InterfaceType.c	\
-	./asn/GroupID.c	\
-	./asn/QoSID.c	\
-	./asn/RANfunction-Name.c	\
-	./asn/RIC-Format-Type.c	\
-	./asn/RIC-Style-Type.c	\
-	./asn/RIC-Style-Name.c	\
-	./asn/RRC-MessageID.c	\
-	./asn/RRCclass-LTE.c	\
-	./asn/RRCclass-NR.c	\
-	./asn/ServingCell-ARFCN.c	\
-	./asn/ServingCell-PCI.c	\
-	./asn/UEID.c	\
-	./asn/UEID-GNB.c	\
-	./asn/UEID-GNB-CU-CP-E1AP-ID-List.c	\
-	./asn/UEID-GNB-CU-CP-E1AP-ID-Item.c	\
-	./asn/UEID-GNB-CU-F1AP-ID-List.c	\
-	./asn/UEID-GNB-CU-CP-F1AP-ID-Item.c	\
-	./asn/UEID-GNB-DU.c	\
-	./asn/UEID-GNB-CU-UP.c	\
-	./asn/UEID-NG-ENB.c	\
-	./asn/UEID-NG-ENB-DU.c	\
-	./asn/UEID-EN-GNB.c	\
-	./asn/UEID-ENB.c	\
-	./asn/ENB-ID.c	\
-	./asn/GlobalENB-ID.c	\
-	./asn/GUMMEI.c	\
-	./asn/MME-Group-ID.c	\
-	./asn/MME-Code.c	\
-	./asn/MME-UE-S1AP-ID.c	\
-	./asn/QCI.c	\
-	./asn/SubscriberProfileIDforRFP.c	\
-	./asn/EN-GNB-ID.c	\
-	./asn/ENB-UE-X2AP-ID.c	\
-	./asn/ENB-UE-X2AP-ID-Extension.c	\
-	./asn/E-UTRA-ARFCN.c	\
-	./asn/E-UTRA-PCI.c	\
-	./asn/E-UTRA-TAC.c	\
-	./asn/GlobalenGNB-ID.c	\
-	./asn/NGENB-CU-UE-W1AP-ID.c	\
-	./asn/NGENB-DU-ID.c	\
-	./asn/AMFPointer.c	\
-	./asn/AMFRegionID.c	\
-	./asn/AMFSetID.c	\
-	./asn/AMF-UE-NGAP-ID.c	\
-	./asn/EUTRACellIdentity.c	\
-	./asn/EUTRA-CGI.c	\
-	./asn/FiveQI.c	\
-	./asn/GlobalGNB-ID.c	\
-	./asn/GlobalNgENB-ID.c	\
-	./asn/GNB-ID.c	\
-	./asn/GUAMI.c	\
-	./asn/IndexToRFSP.c	\
-	./asn/NgENB-ID.c	\
-	./asn/NRCellIdentity.c	\
-	./asn/NR-CGI.c	\
-	./asn/PLMNIdentity.c	\
-	./asn/QosFlowIdentifier.c	\
-	./asn/SD.c	\
-	./asn/S-NSSAI.c	\
-	./asn/SST.c	\
-	./asn/NG-RANnodeUEXnAPID.c	\
-	./asn/GlobalNGRANNodeID.c	\
-	./asn/GNB-CU-CP-UE-E1AP-ID.c	\
-	./asn/GNB-CU-UP-ID.c	\
-	./asn/FiveGS-TAC.c	\
-	./asn/FreqBandNrItem.c	\
-	./asn/GNB-CU-UE-F1AP-ID.c	\
-	./asn/GNB-DU-ID.c	\
-	./asn/NR-PCI.c	\
-	./asn/NR-ARFCN.c	\
-	./asn/NRFrequencyBand-List.c	\
-	./asn/NRFrequencyBandItem.c	\
-	./asn/NRFrequencyInfo.c	\
-	./asn/NRFrequencyShift7p5khz.c	\
-	./asn/RANUEID.c	\
-	./asn/SupportedSULBandList.c	\
-	./asn/SupportedSULFreqBandItem.c
+	asn_mouse/TimeStamp.c	\
+	asn_mouse/GranularityPeriod.c	\
+	asn_mouse/MeasurementType.c	\
+	asn_mouse/MeasurementTypeName.c	\
+	asn_mouse/MeasurementTypeID.c	\
+	asn_mouse/MeasurementLabel.c	\
+	asn_mouse/TestCondInfo.c	\
+	asn_mouse/TestCond-Type.c	\
+	asn_mouse/TestCond-Expression.c	\
+	asn_mouse/TestCond-Value.c	\
+	asn_mouse/MeasurementInfoList.c	\
+	asn_mouse/MeasurementInfoItem.c	\
+	asn_mouse/LabelInfoList.c	\
+	asn_mouse/LabelInfoItem.c	\
+	asn_mouse/MeasurementData.c	\
+	asn_mouse/MeasurementDataItem.c	\
+	asn_mouse/MeasurementRecord.c	\
+	asn_mouse/MeasurementRecordItem.c	\
+	asn_mouse/MeasurementInfo-Action-List.c	\
+	asn_mouse/MeasurementInfo-Action-Item.c	\
+	asn_mouse/MeasurementCondList.c	\
+	asn_mouse/MeasurementCondItem.c	\
+	asn_mouse/MeasurementCondUEidList.c	\
+	asn_mouse/MeasurementCondUEidItem.c	\
+	asn_mouse/MatchingCondList.c	\
+	asn_mouse/MatchingCondItem.c	\
+	asn_mouse/MatchingUEidList.c	\
+	asn_mouse/MatchingUEidItem.c	\
+	asn_mouse/MatchingUeCondPerSubList.c	\
+	asn_mouse/MatchingUeCondPerSubItem.c	\
+	asn_mouse/MatchingUEidPerSubList.c	\
+	asn_mouse/MatchingUEidPerSubItem.c	\
+	asn_mouse/UEMeasurementReportList.c	\
+	asn_mouse/UEMeasurementReportItem.c	\
+	asn_mouse/E2SM-KPM-EventTriggerDefinition.c	\
+	asn_mouse/E2SM-KPM-EventTriggerDefinition-Format1.c	\
+	asn_mouse/E2SM-KPM-ActionDefinition.c	\
+	asn_mouse/E2SM-KPM-ActionDefinition-Format1.c	\
+	asn_mouse/E2SM-KPM-ActionDefinition-Format2.c	\
+	asn_mouse/E2SM-KPM-ActionDefinition-Format3.c	\
+	asn_mouse/E2SM-KPM-ActionDefinition-Format4.c	\
+	asn_mouse/E2SM-KPM-ActionDefinition-Format5.c	\
+	asn_mouse/E2SM-KPM-IndicationHeader.c	\
+	asn_mouse/E2SM-KPM-IndicationHeader-Format1.c	\
+	asn_mouse/E2SM-KPM-IndicationMessage.c	\
+	asn_mouse/E2SM-KPM-IndicationMessage-Format1.c	\
+	asn_mouse/E2SM-KPM-IndicationMessage-Format2.c	\
+	asn_mouse/E2SM-KPM-IndicationMessage-Format3.c	\
+	asn_mouse/E2SM-KPM-RANfunction-Description.c	\
+	asn_mouse/RIC-EventTriggerStyle-Item.c	\
+	asn_mouse/RIC-ReportStyle-Item.c	\
+	asn_mouse/CGI.c	\
+	asn_mouse/CoreCPID.c	\
+	asn_mouse/InterfaceIdentifier.c	\
+	asn_mouse/InterfaceID-NG.c	\
+	asn_mouse/InterfaceID-Xn.c	\
+	asn_mouse/InterfaceID-F1.c	\
+	asn_mouse/InterfaceID-E1.c	\
+	asn_mouse/InterfaceID-S1.c	\
+	asn_mouse/InterfaceID-X2.c	\
+	asn_mouse/InterfaceID-W1.c	\
+	asn_mouse/Interface-MessageID.c	\
+	asn_mouse/InterfaceType.c	\
+	asn_mouse/GroupID.c	\
+	asn_mouse/QoSID.c	\
+	asn_mouse/RANfunction-Name.c	\
+	asn_mouse/RIC-Format-Type.c	\
+	asn_mouse/RIC-Style-Type.c	\
+	asn_mouse/RIC-Style-Name.c	\
+	asn_mouse/RRC-MessageID.c	\
+	asn_mouse/RRCclass-LTE.c	\
+	asn_mouse/RRCclass-NR.c	\
+	asn_mouse/ServingCell-ARFCN.c	\
+	asn_mouse/ServingCell-PCI.c	\
+	asn_mouse/UEID.c	\
+	asn_mouse/UEID-GNB.c	\
+	asn_mouse/UEID-GNB-CU-CP-E1AP-ID-List.c	\
+	asn_mouse/UEID-GNB-CU-CP-E1AP-ID-Item.c	\
+	asn_mouse/UEID-GNB-CU-F1AP-ID-List.c	\
+	asn_mouse/UEID-GNB-CU-CP-F1AP-ID-Item.c	\
+	asn_mouse/UEID-GNB-DU.c	\
+	asn_mouse/UEID-GNB-CU-UP.c	\
+	asn_mouse/UEID-NG-ENB.c	\
+	asn_mouse/UEID-NG-ENB-DU.c	\
+	asn_mouse/UEID-EN-GNB.c	\
+	asn_mouse/UEID-ENB.c	\
+	asn_mouse/ENB-ID.c	\
+	asn_mouse/GlobalENB-ID.c	\
+	asn_mouse/GUMMEI.c	\
+	asn_mouse/MME-Group-ID.c	\
+	asn_mouse/MME-Code.c	\
+	asn_mouse/MME-UE-S1AP-ID.c	\
+	asn_mouse/QCI.c	\
+	asn_mouse/SubscriberProfileIDforRFP.c	\
+	asn_mouse/EN-GNB-ID.c	\
+	asn_mouse/ENB-UE-X2AP-ID.c	\
+	asn_mouse/ENB-UE-X2AP-ID-Extension.c	\
+	asn_mouse/E-UTRA-ARFCN.c	\
+	asn_mouse/E-UTRA-PCI.c	\
+	asn_mouse/E-UTRA-TAC.c	\
+	asn_mouse/GlobalenGNB-ID.c	\
+	asn_mouse/NGENB-CU-UE-W1AP-ID.c	\
+	asn_mouse/NGENB-DU-ID.c	\
+	asn_mouse/AMFPointer.c	\
+	asn_mouse/AMFRegionID.c	\
+	asn_mouse/AMFSetID.c	\
+	asn_mouse/AMF-UE-NGAP-ID.c	\
+	asn_mouse/EUTRACellIdentity.c	\
+	asn_mouse/EUTRA-CGI.c	\
+	asn_mouse/FiveQI.c	\
+	asn_mouse/GlobalGNB-ID.c	\
+	asn_mouse/GlobalNgENB-ID.c	\
+	asn_mouse/GNB-ID.c	\
+	asn_mouse/GUAMI.c	\
+	asn_mouse/IndexToRFSP.c	\
+	asn_mouse/NgENB-ID.c	\
+	asn_mouse/NRCellIdentity.c	\
+	asn_mouse/NR-CGI.c	\
+	asn_mouse/PLMNIdentity.c	\
+	asn_mouse/QosFlowIdentifier.c	\
+	asn_mouse/SD.c	\
+	asn_mouse/S-NSSAI.c	\
+	asn_mouse/SST.c	\
+	asn_mouse/NG-RANnodeUEXnAPID.c	\
+	asn_mouse/GlobalNGRANNodeID.c	\
+	asn_mouse/GNB-CU-CP-UE-E1AP-ID.c	\
+	asn_mouse/GNB-CU-UP-ID.c	\
+	asn_mouse/FiveGS-TAC.c	\
+	asn_mouse/FreqBandNrItem.c	\
+	asn_mouse/GNB-CU-UE-F1AP-ID.c	\
+	asn_mouse/GNB-DU-ID.c	\
+	asn_mouse/NR-PCI.c	\
+	asn_mouse/NR-ARFCN.c	\
+	asn_mouse/NRFrequencyBand-List.c	\
+	asn_mouse/NRFrequencyBandItem.c	\
+	asn_mouse/NRFrequencyInfo.c	\
+	asn_mouse/NRFrequencyShift7p5khz.c	\
+	asn_mouse/RANUEID.c	\
+	asn_mouse/SupportedSULBandList.c	\
+	asn_mouse/SupportedSULFreqBandItem.c	\
+	asn_mouse/EXTERNAL.c
 
 ASN_MODULE_HDRS=	\
-	./asn/TimeStamp.h	\
-	./asn/GranularityPeriod.h	\
-	./asn/MeasurementType.h	\
-	./asn/MeasurementTypeName.h	\
-	./asn/MeasurementTypeID.h	\
-	./asn/MeasurementLabel.h	\
-	./asn/TestCondInfo.h	\
-	./asn/TestCond-Type.h	\
-	./asn/TestCond-Expression.h	\
-	./asn/TestCond-Value.h	\
-	./asn/MeasurementInfoList.h	\
-	./asn/MeasurementInfoItem.h	\
-	./asn/LabelInfoList.h	\
-	./asn/LabelInfoItem.h	\
-	./asn/MeasurementData.h	\
-	./asn/MeasurementDataItem.h	\
-	./asn/MeasurementRecord.h	\
-	./asn/MeasurementRecordItem.h	\
-	./asn/MeasurementInfo-Action-List.h	\
-	./asn/MeasurementInfo-Action-Item.h	\
-	./asn/MeasurementCondList.h	\
-	./asn/MeasurementCondItem.h	\
-	./asn/MeasurementCondUEidList.h	\
-	./asn/MeasurementCondUEidItem.h	\
-	./asn/MatchingCondList.h	\
-	./asn/MatchingCondItem.h	\
-	./asn/MatchingUEidList.h	\
-	./asn/MatchingUEidItem.h	\
-	./asn/MatchingUeCondPerSubList.h	\
-	./asn/MatchingUeCondPerSubItem.h	\
-	./asn/MatchingUEidPerSubList.h	\
-	./asn/MatchingUEidPerSubItem.h	\
-	./asn/UEMeasurementReportList.h	\
-	./asn/UEMeasurementReportItem.h	\
-	./asn/E2SM-KPM-EventTriggerDefinition.h	\
-	./asn/E2SM-KPM-EventTriggerDefinition-Format1.h	\
-	./asn/E2SM-KPM-ActionDefinition.h	\
-	./asn/E2SM-KPM-ActionDefinition-Format1.h	\
-	./asn/E2SM-KPM-ActionDefinition-Format2.h	\
-	./asn/E2SM-KPM-ActionDefinition-Format3.h	\
-	./asn/E2SM-KPM-ActionDefinition-Format4.h	\
-	./asn/E2SM-KPM-ActionDefinition-Format5.h	\
-	./asn/E2SM-KPM-IndicationHeader.h	\
-	./asn/E2SM-KPM-IndicationHeader-Format1.h	\
-	./asn/E2SM-KPM-IndicationMessage.h	\
-	./asn/E2SM-KPM-IndicationMessage-Format1.h	\
-	./asn/E2SM-KPM-IndicationMessage-Format2.h	\
-	./asn/E2SM-KPM-IndicationMessage-Format3.h	\
-	./asn/E2SM-KPM-RANfunction-Description.h	\
-	./asn/RIC-EventTriggerStyle-Item.h	\
-	./asn/RIC-ReportStyle-Item.h	\
-	./asn/CGI.h	\
-	./asn/CoreCPID.h	\
-	./asn/InterfaceIdentifier.h	\
-	./asn/InterfaceID-NG.h	\
-	./asn/InterfaceID-Xn.h	\
-	./asn/InterfaceID-F1.h	\
-	./asn/InterfaceID-E1.h	\
-	./asn/InterfaceID-S1.h	\
-	./asn/InterfaceID-X2.h	\
-	./asn/InterfaceID-W1.h	\
-	./asn/Interface-MessageID.h	\
-	./asn/InterfaceType.h	\
-	./asn/GroupID.h	\
-	./asn/QoSID.h	\
-	./asn/RANfunction-Name.h	\
-	./asn/RIC-Format-Type.h	\
-	./asn/RIC-Style-Type.h	\
-	./asn/RIC-Style-Name.h	\
-	./asn/RRC-MessageID.h	\
-	./asn/RRCclass-LTE.h	\
-	./asn/RRCclass-NR.h	\
-	./asn/ServingCell-ARFCN.h	\
-	./asn/ServingCell-PCI.h	\
-	./asn/UEID.h	\
-	./asn/UEID-GNB.h	\
-	./asn/UEID-GNB-CU-CP-E1AP-ID-List.h	\
-	./asn/UEID-GNB-CU-CP-E1AP-ID-Item.h	\
-	./asn/UEID-GNB-CU-F1AP-ID-List.h	\
-	./asn/UEID-GNB-CU-CP-F1AP-ID-Item.h	\
-	./asn/UEID-GNB-DU.h	\
-	./asn/UEID-GNB-CU-UP.h	\
-	./asn/UEID-NG-ENB.h	\
-	./asn/UEID-NG-ENB-DU.h	\
-	./asn/UEID-EN-GNB.h	\
-	./asn/UEID-ENB.h	\
-	./asn/ENB-ID.h	\
-	./asn/GlobalENB-ID.h	\
-	./asn/GUMMEI.h	\
-	./asn/MME-Group-ID.h	\
-	./asn/MME-Code.h	\
-	./asn/MME-UE-S1AP-ID.h	\
-	./asn/QCI.h	\
-	./asn/SubscriberProfileIDforRFP.h	\
-	./asn/EN-GNB-ID.h	\
-	./asn/ENB-UE-X2AP-ID.h	\
-	./asn/ENB-UE-X2AP-ID-Extension.h	\
-	./asn/E-UTRA-ARFCN.h	\
-	./asn/E-UTRA-PCI.h	\
-	./asn/E-UTRA-TAC.h	\
-	./asn/GlobalenGNB-ID.h	\
-	./asn/NGENB-CU-UE-W1AP-ID.h	\
-	./asn/NGENB-DU-ID.h	\
-	./asn/AMFPointer.h	\
-	./asn/AMFRegionID.h	\
-	./asn/AMFSetID.h	\
-	./asn/AMF-UE-NGAP-ID.h	\
-	./asn/EUTRACellIdentity.h	\
-	./asn/EUTRA-CGI.h	\
-	./asn/FiveQI.h	\
-	./asn/GlobalGNB-ID.h	\
-	./asn/GlobalNgENB-ID.h	\
-	./asn/GNB-ID.h	\
-	./asn/GUAMI.h	\
-	./asn/IndexToRFSP.h	\
-	./asn/NgENB-ID.h	\
-	./asn/NRCellIdentity.h	\
-	./asn/NR-CGI.h	\
-	./asn/PLMNIdentity.h	\
-	./asn/QosFlowIdentifier.h	\
-	./asn/SD.h	\
-	./asn/S-NSSAI.h	\
-	./asn/SST.h	\
-	./asn/NG-RANnodeUEXnAPID.h	\
-	./asn/GlobalNGRANNodeID.h	\
-	./asn/GNB-CU-CP-UE-E1AP-ID.h	\
-	./asn/GNB-CU-UP-ID.h	\
-	./asn/FiveGS-TAC.h	\
-	./asn/FreqBandNrItem.h	\
-	./asn/GNB-CU-UE-F1AP-ID.h	\
-	./asn/GNB-DU-ID.h	\
-	./asn/NR-PCI.h	\
-	./asn/NR-ARFCN.h	\
-	./asn/NRFrequencyBand-List.h	\
-	./asn/NRFrequencyBandItem.h	\
-	./asn/NRFrequencyInfo.h	\
-	./asn/NRFrequencyShift7p5khz.h	\
-	./asn/RANUEID.h	\
-	./asn/SupportedSULBandList.h	\
-	./asn/SupportedSULFreqBandItem.h
+	asn_mouse/TimeStamp.h	\
+	asn_mouse/GranularityPeriod.h	\
+	asn_mouse/MeasurementType.h	\
+	asn_mouse/MeasurementTypeName.h	\
+	asn_mouse/MeasurementTypeID.h	\
+	asn_mouse/MeasurementLabel.h	\
+	asn_mouse/TestCondInfo.h	\
+	asn_mouse/TestCond-Type.h	\
+	asn_mouse/TestCond-Expression.h	\
+	asn_mouse/TestCond-Value.h	\
+	asn_mouse/MeasurementInfoList.h	\
+	asn_mouse/MeasurementInfoItem.h	\
+	asn_mouse/LabelInfoList.h	\
+	asn_mouse/LabelInfoItem.h	\
+	asn_mouse/MeasurementData.h	\
+	asn_mouse/MeasurementDataItem.h	\
+	asn_mouse/MeasurementRecord.h	\
+	asn_mouse/MeasurementRecordItem.h	\
+	asn_mouse/MeasurementInfo-Action-List.h	\
+	asn_mouse/MeasurementInfo-Action-Item.h	\
+	asn_mouse/MeasurementCondList.h	\
+	asn_mouse/MeasurementCondItem.h	\
+	asn_mouse/MeasurementCondUEidList.h	\
+	asn_mouse/MeasurementCondUEidItem.h	\
+	asn_mouse/MatchingCondList.h	\
+	asn_mouse/MatchingCondItem.h	\
+	asn_mouse/MatchingUEidList.h	\
+	asn_mouse/MatchingUEidItem.h	\
+	asn_mouse/MatchingUeCondPerSubList.h	\
+	asn_mouse/MatchingUeCondPerSubItem.h	\
+	asn_mouse/MatchingUEidPerSubList.h	\
+	asn_mouse/MatchingUEidPerSubItem.h	\
+	asn_mouse/UEMeasurementReportList.h	\
+	asn_mouse/UEMeasurementReportItem.h	\
+	asn_mouse/E2SM-KPM-EventTriggerDefinition.h	\
+	asn_mouse/E2SM-KPM-EventTriggerDefinition-Format1.h	\
+	asn_mouse/E2SM-KPM-ActionDefinition.h	\
+	asn_mouse/E2SM-KPM-ActionDefinition-Format1.h	\
+	asn_mouse/E2SM-KPM-ActionDefinition-Format2.h	\
+	asn_mouse/E2SM-KPM-ActionDefinition-Format3.h	\
+	asn_mouse/E2SM-KPM-ActionDefinition-Format4.h	\
+	asn_mouse/E2SM-KPM-ActionDefinition-Format5.h	\
+	asn_mouse/E2SM-KPM-IndicationHeader.h	\
+	asn_mouse/E2SM-KPM-IndicationHeader-Format1.h	\
+	asn_mouse/E2SM-KPM-IndicationMessage.h	\
+	asn_mouse/E2SM-KPM-IndicationMessage-Format1.h	\
+	asn_mouse/E2SM-KPM-IndicationMessage-Format2.h	\
+	asn_mouse/E2SM-KPM-IndicationMessage-Format3.h	\
+	asn_mouse/E2SM-KPM-RANfunction-Description.h	\
+	asn_mouse/RIC-EventTriggerStyle-Item.h	\
+	asn_mouse/RIC-ReportStyle-Item.h	\
+	asn_mouse/CGI.h	\
+	asn_mouse/CoreCPID.h	\
+	asn_mouse/InterfaceIdentifier.h	\
+	asn_mouse/InterfaceID-NG.h	\
+	asn_mouse/InterfaceID-Xn.h	\
+	asn_mouse/InterfaceID-F1.h	\
+	asn_mouse/InterfaceID-E1.h	\
+	asn_mouse/InterfaceID-S1.h	\
+	asn_mouse/InterfaceID-X2.h	\
+	asn_mouse/InterfaceID-W1.h	\
+	asn_mouse/Interface-MessageID.h	\
+	asn_mouse/InterfaceType.h	\
+	asn_mouse/GroupID.h	\
+	asn_mouse/QoSID.h	\
+	asn_mouse/RANfunction-Name.h	\
+	asn_mouse/RIC-Format-Type.h	\
+	asn_mouse/RIC-Style-Type.h	\
+	asn_mouse/RIC-Style-Name.h	\
+	asn_mouse/RRC-MessageID.h	\
+	asn_mouse/RRCclass-LTE.h	\
+	asn_mouse/RRCclass-NR.h	\
+	asn_mouse/ServingCell-ARFCN.h	\
+	asn_mouse/ServingCell-PCI.h	\
+	asn_mouse/UEID.h	\
+	asn_mouse/UEID-GNB.h	\
+	asn_mouse/UEID-GNB-CU-CP-E1AP-ID-List.h	\
+	asn_mouse/UEID-GNB-CU-CP-E1AP-ID-Item.h	\
+	asn_mouse/UEID-GNB-CU-F1AP-ID-List.h	\
+	asn_mouse/UEID-GNB-CU-CP-F1AP-ID-Item.h	\
+	asn_mouse/UEID-GNB-DU.h	\
+	asn_mouse/UEID-GNB-CU-UP.h	\
+	asn_mouse/UEID-NG-ENB.h	\
+	asn_mouse/UEID-NG-ENB-DU.h	\
+	asn_mouse/UEID-EN-GNB.h	\
+	asn_mouse/UEID-ENB.h	\
+	asn_mouse/ENB-ID.h	\
+	asn_mouse/GlobalENB-ID.h	\
+	asn_mouse/GUMMEI.h	\
+	asn_mouse/MME-Group-ID.h	\
+	asn_mouse/MME-Code.h	\
+	asn_mouse/MME-UE-S1AP-ID.h	\
+	asn_mouse/QCI.h	\
+	asn_mouse/SubscriberProfileIDforRFP.h	\
+	asn_mouse/EN-GNB-ID.h	\
+	asn_mouse/ENB-UE-X2AP-ID.h	\
+	asn_mouse/ENB-UE-X2AP-ID-Extension.h	\
+	asn_mouse/E-UTRA-ARFCN.h	\
+	asn_mouse/E-UTRA-PCI.h	\
+	asn_mouse/E-UTRA-TAC.h	\
+	asn_mouse/GlobalenGNB-ID.h	\
+	asn_mouse/NGENB-CU-UE-W1AP-ID.h	\
+	asn_mouse/NGENB-DU-ID.h	\
+	asn_mouse/AMFPointer.h	\
+	asn_mouse/AMFRegionID.h	\
+	asn_mouse/AMFSetID.h	\
+	asn_mouse/AMF-UE-NGAP-ID.h	\
+	asn_mouse/EUTRACellIdentity.h	\
+	asn_mouse/EUTRA-CGI.h	\
+	asn_mouse/FiveQI.h	\
+	asn_mouse/GlobalGNB-ID.h	\
+	asn_mouse/GlobalNgENB-ID.h	\
+	asn_mouse/GNB-ID.h	\
+	asn_mouse/GUAMI.h	\
+	asn_mouse/IndexToRFSP.h	\
+	asn_mouse/NgENB-ID.h	\
+	asn_mouse/NRCellIdentity.h	\
+	asn_mouse/NR-CGI.h	\
+	asn_mouse/PLMNIdentity.h	\
+	asn_mouse/QosFlowIdentifier.h	\
+	asn_mouse/SD.h	\
+	asn_mouse/S-NSSAI.h	\
+	asn_mouse/SST.h	\
+	asn_mouse/NG-RANnodeUEXnAPID.h	\
+	asn_mouse/GlobalNGRANNodeID.h	\
+	asn_mouse/GNB-CU-CP-UE-E1AP-ID.h	\
+	asn_mouse/GNB-CU-UP-ID.h	\
+	asn_mouse/FiveGS-TAC.h	\
+	asn_mouse/FreqBandNrItem.h	\
+	asn_mouse/GNB-CU-UE-F1AP-ID.h	\
+	asn_mouse/GNB-DU-ID.h	\
+	asn_mouse/NR-PCI.h	\
+	asn_mouse/NR-ARFCN.h	\
+	asn_mouse/NRFrequencyBand-List.h	\
+	asn_mouse/NRFrequencyBandItem.h	\
+	asn_mouse/NRFrequencyInfo.h	\
+	asn_mouse/NRFrequencyShift7p5khz.h	\
+	asn_mouse/RANUEID.h	\
+	asn_mouse/SupportedSULBandList.h	\
+	asn_mouse/SupportedSULFreqBandItem.h	\
+	asn_mouse/EXTERNAL.h
 
-ASN_MODULE_HDRS+=./asn/OPEN_TYPE.h
-ASN_MODULE_SRCS+=./asn/OPEN_TYPE.c
-ASN_MODULE_HDRS+=./asn/constr_CHOICE.h
-ASN_MODULE_HDRS+=./asn/BOOLEAN.h
-ASN_MODULE_SRCS+=./asn/BOOLEAN.c
-ASN_MODULE_HDRS+=./asn/INTEGER.h
-ASN_MODULE_SRCS+=./asn/INTEGER.c
-ASN_MODULE_HDRS+=./asn/NULL.h
-ASN_MODULE_SRCS+=./asn/NULL.c
-ASN_MODULE_HDRS+=./asn/NativeEnumerated.h
-ASN_MODULE_SRCS+=./asn/NativeEnumerated.c
-ASN_MODULE_HDRS+=./asn/NativeInteger.h
-ASN_MODULE_SRCS+=./asn/NativeInteger.c
-ASN_MODULE_HDRS+=./asn/NativeReal.h
-ASN_MODULE_SRCS+=./asn/NativeReal.c
-ASN_MODULE_HDRS+=./asn/REAL.h
-ASN_MODULE_HDRS+=./asn/PrintableString.h
-ASN_MODULE_SRCS+=./asn/PrintableString.c
-ASN_MODULE_HDRS+=./asn/OCTET_STRING.h
-ASN_MODULE_SRCS+=./asn/REAL.c
-ASN_MODULE_HDRS+=./asn/asn_SEQUENCE_OF.h
-ASN_MODULE_SRCS+=./asn/asn_SEQUENCE_OF.c
-ASN_MODULE_HDRS+=./asn/asn_SET_OF.h
-ASN_MODULE_SRCS+=./asn/asn_SET_OF.c
-ASN_MODULE_SRCS+=./asn/constr_CHOICE.c
-ASN_MODULE_HDRS+=./asn/constr_SEQUENCE.h
-ASN_MODULE_SRCS+=./asn/constr_SEQUENCE.c
-ASN_MODULE_HDRS+=./asn/constr_SEQUENCE_OF.h
-ASN_MODULE_SRCS+=./asn/constr_SEQUENCE_OF.c
-ASN_MODULE_HDRS+=./asn/constr_SET_OF.h
-ASN_MODULE_SRCS+=./asn/constr_SET_OF.c
-ASN_MODULE_HDRS+=./asn/asn_application.h
-ASN_MODULE_SRCS+=./asn/asn_application.c
-ASN_MODULE_HDRS+=./asn/asn_ioc.h
-ASN_MODULE_HDRS+=./asn/asn_system.h
-ASN_MODULE_HDRS+=./asn/asn_codecs.h
-ASN_MODULE_HDRS+=./asn/asn_internal.h
-ASN_MODULE_SRCS+=./asn/asn_internal.c
-ASN_MODULE_HDRS+=./asn/asn_random_fill.h
-ASN_MODULE_SRCS+=./asn/asn_random_fill.c
-ASN_MODULE_HDRS+=./asn/asn_bit_data.h
-ASN_MODULE_SRCS+=./asn/asn_bit_data.c
-ASN_MODULE_SRCS+=./asn/OCTET_STRING.c
-ASN_MODULE_HDRS+=./asn/BIT_STRING.h
-ASN_MODULE_SRCS+=./asn/BIT_STRING.c
-ASN_MODULE_SRCS+=./asn/asn_codecs_prim.c
-ASN_MODULE_HDRS+=./asn/asn_codecs_prim.h
-ASN_MODULE_HDRS+=./asn/ber_tlv_length.h
-ASN_MODULE_SRCS+=./asn/ber_tlv_length.c
-ASN_MODULE_HDRS+=./asn/ber_tlv_tag.h
-ASN_MODULE_SRCS+=./asn/ber_tlv_tag.c
-ASN_MODULE_HDRS+=./asn/ber_decoder.h
-ASN_MODULE_SRCS+=./asn/ber_decoder.c
-ASN_MODULE_HDRS+=./asn/der_encoder.h
-ASN_MODULE_SRCS+=./asn/der_encoder.c
-ASN_MODULE_HDRS+=./asn/constr_TYPE.h
-ASN_MODULE_SRCS+=./asn/constr_TYPE.c
-ASN_MODULE_HDRS+=./asn/constraints.h
-ASN_MODULE_SRCS+=./asn/constraints.c
-ASN_MODULE_HDRS+=./asn/xer_support.h
-ASN_MODULE_SRCS+=./asn/xer_support.c
-ASN_MODULE_HDRS+=./asn/xer_decoder.h
-ASN_MODULE_SRCS+=./asn/xer_decoder.c
-ASN_MODULE_HDRS+=./asn/xer_encoder.h
-ASN_MODULE_SRCS+=./asn/xer_encoder.c
-ASN_MODULE_HDRS+=./asn/per_support.h
-ASN_MODULE_SRCS+=./asn/per_support.c
-ASN_MODULE_HDRS+=./asn/per_decoder.h
-ASN_MODULE_SRCS+=./asn/per_decoder.c
-ASN_MODULE_HDRS+=./asn/per_encoder.h
-ASN_MODULE_SRCS+=./asn/per_encoder.c
-ASN_MODULE_HDRS+=./asn/per_opentype.h
-ASN_MODULE_SRCS+=./asn/per_opentype.c
-ASN_MODULE_HDRS+=./asn/oer_decoder.h
-ASN_MODULE_HDRS+=./asn/oer_encoder.h
-ASN_MODULE_HDRS+=./asn/oer_support.h
-ASN_MODULE_SRCS+=./asn/oer_decoder.c
-ASN_MODULE_SRCS+=./asn/oer_encoder.c
-ASN_MODULE_SRCS+=./asn/oer_support.c
-ASN_MODULE_SRCS+=./asn/OPEN_TYPE_oer.c
-ASN_MODULE_SRCS+=./asn/INTEGER_oer.c
-ASN_MODULE_SRCS+=./asn/BIT_STRING_oer.c
-ASN_MODULE_SRCS+=./asn/OCTET_STRING_oer.c
-ASN_MODULE_SRCS+=./asn/NativeInteger_oer.c
-ASN_MODULE_SRCS+=./asn/NativeEnumerated_oer.c
-ASN_MODULE_SRCS+=./asn/constr_CHOICE_oer.c
-ASN_MODULE_SRCS+=./asn/constr_SEQUENCE_oer.c
-ASN_MODULE_SRCS+=./asn/constr_SET_OF_oer.c
+ASN_MODULE_HDRS+=asn_mouse/ANY.h
+ASN_MODULE_SRCS+=asn_mouse/ANY.c
+ASN_MODULE_HDRS+=asn_mouse/OCTET_STRING.h
+ASN_MODULE_HDRS+=asn_mouse/OPEN_TYPE.h
+ASN_MODULE_SRCS+=asn_mouse/OPEN_TYPE.c
+ASN_MODULE_HDRS+=asn_mouse/constr_CHOICE.h
+ASN_MODULE_HDRS+=asn_mouse/BOOLEAN.h
+ASN_MODULE_SRCS+=asn_mouse/BOOLEAN.c
+ASN_MODULE_HDRS+=asn_mouse/GraphicString.h
+ASN_MODULE_SRCS+=asn_mouse/GraphicString.c
+ASN_MODULE_HDRS+=asn_mouse/INTEGER.h
+ASN_MODULE_SRCS+=asn_mouse/INTEGER.c
+ASN_MODULE_HDRS+=asn_mouse/NULL.h
+ASN_MODULE_SRCS+=asn_mouse/NULL.c
+ASN_MODULE_HDRS+=asn_mouse/NativeEnumerated.h
+ASN_MODULE_SRCS+=asn_mouse/NativeEnumerated.c
+ASN_MODULE_HDRS+=asn_mouse/NativeInteger.h
+ASN_MODULE_SRCS+=asn_mouse/NativeInteger.c
+ASN_MODULE_HDRS+=asn_mouse/NativeReal.h
+ASN_MODULE_SRCS+=asn_mouse/NativeReal.c
+ASN_MODULE_HDRS+=asn_mouse/REAL.h
+ASN_MODULE_HDRS+=asn_mouse/OBJECT_IDENTIFIER.h
+ASN_MODULE_SRCS+=asn_mouse/OBJECT_IDENTIFIER.c
+ASN_MODULE_HDRS+=asn_mouse/asn_codecs_prim.h
+ASN_MODULE_HDRS+=asn_mouse/ObjectDescriptor.h
+ASN_MODULE_SRCS+=asn_mouse/ObjectDescriptor.c
+ASN_MODULE_HDRS+=asn_mouse/PrintableString.h
+ASN_MODULE_SRCS+=asn_mouse/PrintableString.c
+ASN_MODULE_SRCS+=asn_mouse/REAL.c
+ASN_MODULE_HDRS+=asn_mouse/asn_SEQUENCE_OF.h
+ASN_MODULE_SRCS+=asn_mouse/asn_SEQUENCE_OF.c
+ASN_MODULE_HDRS+=asn_mouse/asn_SET_OF.h
+ASN_MODULE_SRCS+=asn_mouse/asn_SET_OF.c
+ASN_MODULE_SRCS+=asn_mouse/constr_CHOICE.c
+ASN_MODULE_HDRS+=asn_mouse/constr_SEQUENCE.h
+ASN_MODULE_SRCS+=asn_mouse/constr_SEQUENCE.c
+ASN_MODULE_HDRS+=asn_mouse/constr_SEQUENCE_OF.h
+ASN_MODULE_SRCS+=asn_mouse/constr_SEQUENCE_OF.c
+ASN_MODULE_HDRS+=asn_mouse/constr_SET_OF.h
+ASN_MODULE_SRCS+=asn_mouse/constr_SET_OF.c
+ASN_MODULE_HDRS+=asn_mouse/asn_application.h
+ASN_MODULE_SRCS+=asn_mouse/asn_application.c
+ASN_MODULE_HDRS+=asn_mouse/asn_ioc.h
+ASN_MODULE_HDRS+=asn_mouse/asn_system.h
+ASN_MODULE_HDRS+=asn_mouse/asn_codecs.h
+ASN_MODULE_HDRS+=asn_mouse/asn_internal.h
+ASN_MODULE_SRCS+=asn_mouse/asn_internal.c
+ASN_MODULE_HDRS+=asn_mouse/asn_bit_data.h
+ASN_MODULE_SRCS+=asn_mouse/asn_bit_data.c
+ASN_MODULE_SRCS+=asn_mouse/OCTET_STRING.c
+ASN_MODULE_HDRS+=asn_mouse/BIT_STRING.h
+ASN_MODULE_SRCS+=asn_mouse/BIT_STRING.c
+ASN_MODULE_SRCS+=asn_mouse/asn_codecs_prim.c
+ASN_MODULE_HDRS+=asn_mouse/ber_tlv_length.h
+ASN_MODULE_SRCS+=asn_mouse/ber_tlv_length.c
+ASN_MODULE_HDRS+=asn_mouse/ber_tlv_tag.h
+ASN_MODULE_SRCS+=asn_mouse/ber_tlv_tag.c
+ASN_MODULE_HDRS+=asn_mouse/constr_TYPE.h
+ASN_MODULE_SRCS+=asn_mouse/constr_TYPE.c
+ASN_MODULE_HDRS+=asn_mouse/constraints.h
+ASN_MODULE_SRCS+=asn_mouse/constraints.c
+ASN_MODULE_HDRS+=asn_mouse/ber_decoder.h
+ASN_MODULE_HDRS+=asn_mouse/der_encoder.h
+ASN_MODULE_SRCS+=asn_mouse/ber_decoder.c
+ASN_MODULE_SRCS+=asn_mouse/der_encoder.c
+ASN_MODULE_SRCS+=asn_mouse/ANY_ber.c
+ASN_MODULE_SRCS+=asn_mouse/BOOLEAN_ber.c
+ASN_MODULE_SRCS+=asn_mouse/INTEGER_ber.c
+ASN_MODULE_SRCS+=asn_mouse/NULL_ber.c
+ASN_MODULE_SRCS+=asn_mouse/NativeInteger_ber.c
+ASN_MODULE_SRCS+=asn_mouse/NativeReal_ber.c
+ASN_MODULE_SRCS+=asn_mouse/OCTET_STRING_ber.c
+ASN_MODULE_SRCS+=asn_mouse/OPEN_TYPE_ber.c
+ASN_MODULE_SRCS+=asn_mouse/asn_codecs_prim_ber.c
+ASN_MODULE_SRCS+=asn_mouse/constr_CHOICE_ber.c
+ASN_MODULE_SRCS+=asn_mouse/constr_SEQUENCE_OF_ber.c
+ASN_MODULE_SRCS+=asn_mouse/constr_SEQUENCE_ber.c
+ASN_MODULE_SRCS+=asn_mouse/constr_SET_OF_ber.c
+ASN_MODULE_HDRS+=asn_mouse/xer_support.h
+ASN_MODULE_HDRS+=asn_mouse/xer_decoder.h
+ASN_MODULE_HDRS+=asn_mouse/xer_encoder.h
+ASN_MODULE_SRCS+=asn_mouse/xer_support.c
+ASN_MODULE_SRCS+=asn_mouse/xer_decoder.c
+ASN_MODULE_SRCS+=asn_mouse/xer_encoder.c
+ASN_MODULE_SRCS+=asn_mouse/ANY_xer.c
+ASN_MODULE_SRCS+=asn_mouse/BIT_STRING_xer.c
+ASN_MODULE_SRCS+=asn_mouse/BOOLEAN_xer.c
+ASN_MODULE_SRCS+=asn_mouse/INTEGER_xer.c
+ASN_MODULE_SRCS+=asn_mouse/NULL_xer.c
+ASN_MODULE_SRCS+=asn_mouse/NativeEnumerated_xer.c
+ASN_MODULE_SRCS+=asn_mouse/NativeInteger_xer.c
+ASN_MODULE_SRCS+=asn_mouse/NativeReal_xer.c
+ASN_MODULE_SRCS+=asn_mouse/OBJECT_IDENTIFIER_xer.c
+ASN_MODULE_SRCS+=asn_mouse/OCTET_STRING_xer.c
+ASN_MODULE_SRCS+=asn_mouse/OPEN_TYPE_xer.c
+ASN_MODULE_SRCS+=asn_mouse/REAL_xer.c
+ASN_MODULE_SRCS+=asn_mouse/asn_codecs_prim_xer.c
+ASN_MODULE_SRCS+=asn_mouse/constr_CHOICE_xer.c
+ASN_MODULE_SRCS+=asn_mouse/constr_SEQUENCE_OF_xer.c
+ASN_MODULE_SRCS+=asn_mouse/constr_SEQUENCE_xer.c
+ASN_MODULE_SRCS+=asn_mouse/constr_SET_OF_xer.c
+ASN_MODULE_HDRS+=asn_mouse/oer_decoder.h
+ASN_MODULE_HDRS+=asn_mouse/oer_encoder.h
+ASN_MODULE_HDRS+=asn_mouse/oer_support.h
+ASN_MODULE_SRCS+=asn_mouse/oer_decoder.c
+ASN_MODULE_SRCS+=asn_mouse/oer_encoder.c
+ASN_MODULE_SRCS+=asn_mouse/oer_support.c
+ASN_MODULE_SRCS+=asn_mouse/OPEN_TYPE_oer.c
+ASN_MODULE_SRCS+=asn_mouse/INTEGER_oer.c
+ASN_MODULE_SRCS+=asn_mouse/BIT_STRING_oer.c
+ASN_MODULE_SRCS+=asn_mouse/OCTET_STRING_oer.c
+ASN_MODULE_SRCS+=asn_mouse/NativeInteger_oer.c
+ASN_MODULE_SRCS+=asn_mouse/NativeEnumerated_oer.c
+ASN_MODULE_SRCS+=asn_mouse/constr_CHOICE_oer.c
+ASN_MODULE_SRCS+=asn_mouse/constr_SEQUENCE_oer.c
+ASN_MODULE_SRCS+=asn_mouse/constr_SET_OF_oer.c
+ASN_MODULE_SRCS+=asn_mouse/BOOLEAN_oer.c
+ASN_MODULE_SRCS+=asn_mouse/NULL_oer.c
+ASN_MODULE_SRCS+=asn_mouse/NativeReal_oer.c
+ASN_MODULE_SRCS+=asn_mouse/REAL_oer.c
+ASN_MODULE_HDRS+=asn_mouse/per_decoder.h
+ASN_MODULE_HDRS+=asn_mouse/per_encoder.h
+ASN_MODULE_HDRS+=asn_mouse/per_support.h
+ASN_MODULE_HDRS+=asn_mouse/per_opentype.h
+ASN_MODULE_SRCS+=asn_mouse/per_decoder.c
+ASN_MODULE_SRCS+=asn_mouse/per_encoder.c
+ASN_MODULE_SRCS+=asn_mouse/per_support.c
+ASN_MODULE_SRCS+=asn_mouse/per_opentype.c
+ASN_MODULE_HDRS+=asn_mouse/uper_decoder.h
+ASN_MODULE_HDRS+=asn_mouse/uper_encoder.h
+ASN_MODULE_HDRS+=asn_mouse/uper_support.h
+ASN_MODULE_HDRS+=asn_mouse/uper_opentype.h
+ASN_MODULE_SRCS+=asn_mouse/uper_decoder.c
+ASN_MODULE_SRCS+=asn_mouse/uper_encoder.c
+ASN_MODULE_SRCS+=asn_mouse/uper_support.c
+ASN_MODULE_SRCS+=asn_mouse/uper_opentype.c
+ASN_MODULE_SRCS+=asn_mouse/ANY_uper.c
+ASN_MODULE_SRCS+=asn_mouse/BIT_STRING_uper.c
+ASN_MODULE_SRCS+=asn_mouse/BOOLEAN_uper.c
+ASN_MODULE_SRCS+=asn_mouse/INTEGER_uper.c
+ASN_MODULE_SRCS+=asn_mouse/NULL_uper.c
+ASN_MODULE_SRCS+=asn_mouse/NativeEnumerated_uper.c
+ASN_MODULE_SRCS+=asn_mouse/NativeInteger_uper.c
+ASN_MODULE_SRCS+=asn_mouse/NativeReal_uper.c
+ASN_MODULE_SRCS+=asn_mouse/OCTET_STRING_uper.c
+ASN_MODULE_SRCS+=asn_mouse/OPEN_TYPE_uper.c
+ASN_MODULE_SRCS+=asn_mouse/REAL_uper.c
+ASN_MODULE_SRCS+=asn_mouse/constr_CHOICE_uper.c
+ASN_MODULE_SRCS+=asn_mouse/constr_SEQUENCE_OF_uper.c
+ASN_MODULE_SRCS+=asn_mouse/constr_SEQUENCE_uper.c
+ASN_MODULE_SRCS+=asn_mouse/constr_SET_OF_uper.c
+ASN_MODULE_HDRS+=asn_mouse/aper_decoder.h
+ASN_MODULE_HDRS+=asn_mouse/aper_encoder.h
+ASN_MODULE_HDRS+=asn_mouse/aper_support.h
+ASN_MODULE_HDRS+=asn_mouse/aper_opentype.h
+ASN_MODULE_SRCS+=asn_mouse/aper_decoder.c
+ASN_MODULE_SRCS+=asn_mouse/aper_encoder.c
+ASN_MODULE_SRCS+=asn_mouse/aper_support.c
+ASN_MODULE_SRCS+=asn_mouse/aper_opentype.c
+ASN_MODULE_SRCS+=asn_mouse/ANY_aper.c
+ASN_MODULE_SRCS+=asn_mouse/BOOLEAN_aper.c
+ASN_MODULE_SRCS+=asn_mouse/INTEGER_aper.c
+ASN_MODULE_SRCS+=asn_mouse/NULL_aper.c
+ASN_MODULE_SRCS+=asn_mouse/NativeEnumerated_aper.c
+ASN_MODULE_SRCS+=asn_mouse/NativeInteger_aper.c
+ASN_MODULE_SRCS+=asn_mouse/NativeReal_aper.c
+ASN_MODULE_SRCS+=asn_mouse/OCTET_STRING_aper.c
+ASN_MODULE_SRCS+=asn_mouse/OPEN_TYPE_aper.c
+ASN_MODULE_SRCS+=asn_mouse/REAL_aper.c
+ASN_MODULE_SRCS+=asn_mouse/constr_CHOICE_aper.c
+ASN_MODULE_SRCS+=asn_mouse/constr_SEQUENCE_OF_aper.c
+ASN_MODULE_SRCS+=asn_mouse/constr_SEQUENCE_aper.c
+ASN_MODULE_SRCS+=asn_mouse/constr_SET_OF_aper.c
+ASN_MODULE_SRCS+=asn_mouse/BIT_STRING_print.c
+ASN_MODULE_SRCS+=asn_mouse/BOOLEAN_print.c
+ASN_MODULE_SRCS+=asn_mouse/INTEGER_print.c
+ASN_MODULE_SRCS+=asn_mouse/NULL_print.c
+ASN_MODULE_SRCS+=asn_mouse/NativeInteger_print.c
+ASN_MODULE_SRCS+=asn_mouse/NativeReal_print.c
+ASN_MODULE_SRCS+=asn_mouse/OBJECT_IDENTIFIER_print.c
+ASN_MODULE_SRCS+=asn_mouse/OCTET_STRING_print.c
+ASN_MODULE_SRCS+=asn_mouse/REAL_print.c
+ASN_MODULE_SRCS+=asn_mouse/constr_CHOICE_print.c
+ASN_MODULE_SRCS+=asn_mouse/constr_SEQUENCE_print.c
+ASN_MODULE_SRCS+=asn_mouse/constr_SET_OF_print.c
+ASN_MODULE_HDRS+=asn_mouse/asn_random_fill.h
+ASN_MODULE_SRCS+=asn_mouse/asn_random_fill.c
+ASN_MODULE_SRCS+=asn_mouse/BIT_STRING_rfill.c
+ASN_MODULE_SRCS+=asn_mouse/BOOLEAN_rfill.c
+ASN_MODULE_SRCS+=asn_mouse/INTEGER_rfill.c
+ASN_MODULE_SRCS+=asn_mouse/NULL_rfill.c
+ASN_MODULE_SRCS+=asn_mouse/NativeInteger_rfill.c
+ASN_MODULE_SRCS+=asn_mouse/NativeReal_rfill.c
+ASN_MODULE_SRCS+=asn_mouse/OBJECT_IDENTIFIER_rfill.c
+ASN_MODULE_SRCS+=asn_mouse/OCTET_STRING_rfill.c
+ASN_MODULE_SRCS+=asn_mouse/REAL_rfill.c
+ASN_MODULE_SRCS+=asn_mouse/constr_CHOICE_rfill.c
+ASN_MODULE_SRCS+=asn_mouse/constr_SEQUENCE_rfill.c
+ASN_MODULE_SRCS+=asn_mouse/constr_SET_OF_rfill.c
+ASN_MODULE_HDRS+=asn_mouse/jer_encoder.h
+ASN_MODULE_SRCS+=asn_mouse/jer_encoder.c
+ASN_MODULE_SRCS+=asn_mouse/ANY_jer.c
+ASN_MODULE_SRCS+=asn_mouse/BIT_STRING_jer.c
+ASN_MODULE_SRCS+=asn_mouse/BOOLEAN_jer.c
+ASN_MODULE_SRCS+=asn_mouse/INTEGER_jer.c
+ASN_MODULE_SRCS+=asn_mouse/NULL_jer.c
+ASN_MODULE_SRCS+=asn_mouse/NativeEnumerated_jer.c
+ASN_MODULE_SRCS+=asn_mouse/NativeInteger_jer.c
+ASN_MODULE_SRCS+=asn_mouse/NativeReal_jer.c
+ASN_MODULE_SRCS+=asn_mouse/OBJECT_IDENTIFIER_jer.c
+ASN_MODULE_SRCS+=asn_mouse/OCTET_STRING_jer.c
+ASN_MODULE_SRCS+=asn_mouse/REAL_jer.c
+ASN_MODULE_SRCS+=asn_mouse/constr_CHOICE_jer.c
+ASN_MODULE_SRCS+=asn_mouse/constr_SEQUENCE_OF_jer.c
+ASN_MODULE_SRCS+=asn_mouse/constr_SEQUENCE_jer.c
+ASN_MODULE_SRCS+=asn_mouse/constr_SET_OF_jer.c
 
 ASN_MODULE_CFLAGS=
 
 lib_LTLIBRARIES+=libasncodec.la
 libasncodec_la_SOURCES=$(ASN_MODULE_SRCS) $(ASN_MODULE_HDRS)
-libasncodec_la_CPPFLAGS=-I$(top_srcdir)/./asn/
+libasncodec_la_CPPFLAGS=-I$(top_srcdir)/asn_mouse/
 libasncodec_la_CFLAGS=$(ASN_MODULE_CFLAGS)
 libasncodec_la_LDFLAGS=-lm

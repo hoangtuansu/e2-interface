@@ -1,12 +1,12 @@
-include asn_mouse/Makefile.am.libasncodec
+include ./Makefile.am.libasncodec
 
 LIBS += -lm
 CFLAGS += $(ASN_MODULE_CFLAGS) -DASN_PDU_COLLECTION -I.
 ASN_LIBRARY ?= libasncodec.a
 ASN_PROGRAM ?= converter-example
 ASN_PROGRAM_SRCS ?= \
-	asn_mouse/converter-example.c\
-	asn_mouse/pdu_collection.c
+	./converter-example.c\
+	./pdu_collection.c
 
 all: $(ASN_PROGRAM)
 
@@ -16,7 +16,10 @@ $(ASN_PROGRAM): $(ASN_LIBRARY) $(ASN_PROGRAM_SRCS:.c=.o)
 $(ASN_LIBRARY): $(ASN_MODULE_SRCS:.c=.o)
 	$(AR) rcs $@ $(ASN_MODULE_SRCS:.c=.o)
 
-%.o: %.c
+.SUFFIXES:
+.SUFFIXES: .c .o
+
+.c.o:
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
@@ -26,5 +29,5 @@ clean:
 regen: regenerate-from-asn1-source
 
 regenerate-from-asn1-source:
-	asn1c -fcompound-names -D asn_mouse/ e2sm-kpmv2.0.asn
+	asn1c -fcompound-names -fincludes-quoted -fno-include-deps -findirect-choice -gen-PER -D . /root/e2ap-v01.00.00.asn
 

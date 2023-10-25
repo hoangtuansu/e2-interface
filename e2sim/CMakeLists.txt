@@ -17,7 +17,7 @@ endif()
 
 include ( GNUInstallDirs )
 
-add_definitions("-D ASN_DISABLE_OER_SUPPORT")
+# add_definitions("-D ASN_DISABLE_OER_SUPPORT")
 
 if( NOT CMAKE_INSTALL_LIBDIR )
 	set( CMAKE_INSTALL_LIBDIR "lib" )

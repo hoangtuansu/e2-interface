@@ -20,14 +20,11 @@
 #define ENCODE_KPM_HPP
 
 extern "C" {
-  #include "OCUCP-PF-Container.h"
   #include "OCTET_STRING.h"
   #include "asn_application.h"
   #include "E2SM-KPM-IndicationMessage.h"
   #include "E2SM-KPM-IndicationHeader.h"  
-  #include "FQIPERSlicesPerPlmnListItem.h"
   #include "E2SM-KPM-RANfunction-Description.h"
-  #include "Timestamp.h"
 }
 
 void encode_kpm(E2SM_KPM_IndicationMessage_t* indicationmessage);
